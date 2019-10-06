@@ -14,6 +14,7 @@
     var messageColor = document.querySelector('.message-person__style');
     var imgPerson = document.querySelector('.img-person');
 
+
     const arrayMessage = [];
     const arrayPerson = [];
     var userid = '';
