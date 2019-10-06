@@ -1,0 +1,101 @@
+.block-messages {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    height: 95vh;
+    background-color: #0e1621;
+  }
+
+.message-content {
+	flex: 1 0 auto;
+}
+.message-footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #242f3d;
+    flex: 0 0 auto;
+    height: 60px;
+    flex-wrap: nowrap;
+}
+
+.message-input {
+    height: 55px;
+    width: 500px;
+    margin-right: 0px;
+    background-color: #242f3d;
+    border: none;
+    font-family: 'Ubuntu', sans-serif;
+    color: #718294;
+}
+
+.message-btn {
+    border-radius: 3px;
+    margin-left: 0px;
+    height: 30px;
+    width: 100px;
+    background-color: #5288c1;
+    border: none;
+    color: #fff;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.message-person__img {
+    border-radius: 50%;
+    background-color: #242f3d;
+    width: 40px;
+    height: 40px;
+}
+
+.message-person__style {
+    border-radius: 5px;
+    background-color: rgb(24, 37, 51);
+    padding: 5px 0px 5px 0px;
+    margin-left: 10px;
+    height: 20px;
+}
+
+.message-person__style__blue {
+
+    border-radius: 5px;
+    background-color: #2b5278;
+    padding: 5px 0px 5px 0px;
+    margin-left: 10px;
+    height: 20px;
+}
+
+
+.list-mess {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.message-person__mess {
+    font-size: 14px;
+    font-family: "Ubuntu";
+    color: rgb(255, 255, 255);
+    line-height: 1.714;
+    text-align: left;
+    display: inline-flex;
+    max-width: 400px;
+    height: 13px;
+}
+
+.message-person__time {
+    padding: 0px 10px 0px 10px;
+    font-size: 14px;
+    font-family: "Ubuntu";
+    color: rgb(122, 140, 158);
+    line-height: 1.714;
+    text-align: left;
+    width: 34px;
+    height: 10px;
+}
+  

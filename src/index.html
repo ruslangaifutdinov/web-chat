@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/contacts.css">
+    <link rel="stylesheet" href="./src/css/message.css">
+    <link rel="stylesheet" href="./src/css/modal.css">
+    <link rel="stylesheet" href="./src/css/dnd.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.2.0/handlebars.min.js"></script>
+    <title>Socket.io chat</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <ul class="header-btn">
+                <li class="header-btn__fold">
+                        <a href="#" class="sidebar__close">
+                                <svg class="header-icon">
+                                    <use
+                                    xlink:href="./src/img/icons-sprite.svg#cross"
+                                    ></use>
+                                </svg>
+                        </a>
+                </li>
+                <li class="header-btn__expand">
+                        <a href="#" class="sidebar__close">
+                                <svg class="header-icon">
+                                    <use
+                                    xlink:href="./src/img/icons-sprite.svg#cross"
+                                    ></use>
+                                </svg>
+                        </a>
+                </li>
+                <li class="header-btn__close">
+                        <a href="#" class="sidebar__close">
+                                <svg class="header-icon">
+                                    <use
+                                    xlink:href="./src/img/icons-sprite.svg#cross"
+                                    ></use>
+                                </svg>
+                        </a>
+                </li>
+            </ul>
+        </div>
+
+        <!--Modal window for autorization-->
+        <div class="modal">
+            <div class="auth-header">
+                <a href="#" class="sidebar__close">
+                        <svg class="sidebar__close-icon">
+                            <use
+                            xlink:href="./src/img/icons-sprite.svg#cross"
+                            ></use>
+                        </svg>
+                </a>
+            </div>
+            <div class="auth-img">
+                <div class="auth-img__border">
+                    <img src="./src/img/communication.png" alt="">
+                </div>
+            </div>
+
+            <h2>АВТОРИЗАЦИЯ</h2>
+            <p>Введите пожалуйста своё фио и ник для дальнейшей авторизации</p>
+            
+            <form>
+                <div class="group-name">      
+                    <input id="name" type="text" class="input-modal" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Введите свое ФИО</label>
+                </div>
+                <div class="group-nickname">      
+                    <input id="nickname" type="text" class="input-modal" required>
+                    <span class="highlight"></span>
+                    <span class="bar"></span>
+                    <label>Введите свой nickname</label>
+                </div>
+            </form>
+            <div class="auth-button">
+                <button class="auth-btn">ВОЙТИ</button>
+            </div>
+        </div>
+
+        <!--Modal window for load image-->
+        <div class="upload">
+            <div class="upload-wrapper">
+                <h2 class="upload-title">Загрузка фото</h2>
+                <form class="upload-area">
+                    <h3 class="upload-area__title">Перетащите сюда фото</h3>
+                    <input type="file" id="fileElem" accept="image/*" >
+                    <input type="hidden" id="myId" value="12345" name="myId" >
+                </form>
+                <div class="upload-btn__wrapper">
+                    <button id="uploadBtnCancel" class="upload-btn cancel">Отмена</button>
+                </div>
+                <div class="close"></div>
+            </div>
+        </div>
+        
+
+        <!--Main blocks-->
+        <div class="block">
+
+        <!--Block for contacts-->  
+            <div class="block-contacts">
+                <div class="block-contacts__search">
+                        <a href="#" class="sidebar__close">
+                                <svg class="search-bars">
+                                    <use
+                                    xlink:href="./src/img/icons-sprite.svg#bars"
+                                    ></use>
+                                </svg>
+                        </a>
+                        <input type="text" class="input-search">
+                </div>
+                <div class="main-contacts">
+                        <div class="contacts">
+                            <div class="person">
+                                <a href=""><img src="./src/img/no-foto.png" alt="person-foto" class="img-person"></a>
+                                
+                                <ul class="person-info">
+                                    <li class="name-person">Добро пожаловать!</li>
+                                    <li class="last-message-person"></li>
+                                </ul>
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            <!--Block for messages-->
+            <div class="block-messages">
+                <div class="message-content">
+                    <div class="message-person">
+                        <ul class="list">
+                            <li class="message-person__avatar">
+                                <img class="" src="" alt="">
+                            </li>
+                            <div class="list-right">
+                                <div class="message-person__style">
+                                    <ul class="list-mess">
+                                        <li class="message-person__mess"></li>
+                                        <li class="message-person__time"></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="message-footer">
+                    <form action="" class="">
+                        <input type="text" class="message-input" placeholder="Введите текст...">
+                        <button class="message-btn">Отправить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./src/js/modal.js"></script>
+    <script src="./src/js/main.js"></script>
+
+    <!--For person block-->
+    <script id="push-persons" type="text/x-handlebars-template">
+        {{#each list}}
+        <div class="contacts">
+            <div class="person">
+                    <a href=""><img src="./src/img/no-foto.png" alt="person-foto" class="img-person"></a>
+                    <ul class="person-info">
+                        <li class="name-person">{{username}}</li>
+                        <li class="last-message-person">{{mess}}</li>
+                    </ul>
+            </div>
+        </div>
+        {{/each}}
+     </script>
+
+     <!--For messages block-->
+     <script id="push-message" type="text/x-handlebars-template">
+        {{#each list}}
+        <ul class="list">
+                <li class="message-person__avatar">
+                    <img class="message-person__img" src="./src/img/no-foto.png" alt="">
+                </li>
+                <div class="list-right">
+                    <div class="message-person__style">
+                        <ul class="list-mess">
+                            <li class="message-person__mess">{{mess}}</li>
+                            <li class="message-person__time">{{date}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </ul>
+        {{/each}}
+     </script>
+    <!--<script src="./src/js/upload.js"></script>--> 
+</body>
+</html>

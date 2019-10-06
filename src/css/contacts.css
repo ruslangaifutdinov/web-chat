@@ -1,0 +1,63 @@
+.block-contacts__search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 75px;
+  }
+  
+  .search-bars {
+    width: 29px;
+    height: 29px;
+    fill: #6c7883;
+  }
+  
+  .input-search {
+    margin-left: 20px;
+    border-radius: 3px;
+    background-color: #242f3d;
+    width: 200px;
+    height: 35px;
+    border: none;
+    color: #6c7883;
+  }
+
+  .contacts {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 50px 50px 20px 50px;
+  }
+
+  .person {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .img-person {
+
+    border-radius: 50%;
+    background-color: #242f3d;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .person-info {
+      margin-left: 20px;
+  }
+
+  .name-person {
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 5px;
+  }
+
+  .last-message-person {
+      color: #718294;
+    font-size: 14px;
+    font-family: 'Ubuntu', sans-serif;
+  }
